@@ -75,5 +75,6 @@ public class CategoriesController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteCategory(@PathVariable int id) {
         // delete the category by id
+        categoryDao.delete(id);
     }
 }
