@@ -29,11 +29,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
              PreparedStatement preparedStatement = connection.prepareStatement(sql);
              ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
-                Category category = new Category();
-                category.setCategoryId(resultSet.getInt("category_id"));
-                category.setName(resultSet.getString("name"));
-                category.setDescription(resultSet.getString("description"));
-                categories.add(category);
+                categories.add(mapRow(resultSet));
             }
 
         } catch (SQLException e) {
@@ -59,12 +55,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    Category category = new Category();
-                    category.setCategoryId(resultSet.getInt("category_id"));
-                    category.setName(resultSet.getString("name"));
-                    category.setDescription(resultSet.getString("description"));
 
-                    return category;
+                    return mapRow(resultSet);
 
                 }
             }
