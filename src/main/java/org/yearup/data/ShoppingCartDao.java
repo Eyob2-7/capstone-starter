@@ -10,7 +10,7 @@ public interface ShoppingCartDao {
     // add additional method signatures here
 
     // Post - Add a product to the cart
-    void addProduct(int uderId, int productId);
+    void addProduct(int userId, int productId);
 
     // Put - Update the quantity of a product already in the cart
     void updateProductQuantity(int userId, int productId, int quantity);
