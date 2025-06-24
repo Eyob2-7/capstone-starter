@@ -44,16 +44,19 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao {
 
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, categoryId);
-            statement.setInt(2, categoryId);
-            statement.setBigDecimal(3, minPrice);
-            statement.setBigDecimal(4, minPrice);
-            statement.setBigDecimal(5, maxPrice);
-            statement.setBigDecimal(6, maxPrice);
-            statement.setString(7, color);
-            statement.setString(8, color);
-            statement.setString(9, searchPattern);
-            statement.setString(10, searchPattern);
+            statement.setInt(1, categoryId); //category_id = ?
+            statement.setInt(2, categoryId); // ? = -1
+            statement.setBigDecimal(3, minPrice); //price >= ?
+            statement.setBigDecimal(4, minPrice); //? = -1
+
+            // ✅ Added maxPrice filter to fix incorrect search results
+            statement.setBigDecimal(5, maxPrice); //price <= ?
+            statement.setBigDecimal(6, maxPrice); //? = -1
+
+            statement.setString(7, color); //color = ?
+            statement.setString(8, color); //? = ''
+            statement.setString(9, searchPattern); //name LIKE
+            statement.setString(10, searchPattern); //description LIKE
 
             ResultSet row = statement.executeQuery();
 
