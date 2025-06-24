@@ -56,7 +56,7 @@ public class ShoppingCartController {
 
     // ==== Post  ====
     @PostMapping("/products/{productId}")
-    public void addToCart(@PathVariable int productId, Principal principal) {
+    public ShoppingCart addToCart(@PathVariable int productId, Principal principal) {
         try {
             // get the currently logged-in username
             String userName = principal.getName();
@@ -66,6 +66,10 @@ public class ShoppingCartController {
 
             // use the shopping-cartDao to add items in the cart
             shoppingCartDao.addProduct(userId, productId);
+
+            // Return the updated cart
+            return shoppingCartDao.getByUserId(userId);
+
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
@@ -78,7 +82,7 @@ public class ShoppingCartController {
 
     // ==== Put ====
     @PutMapping("/products/{productId}")
-    public void updateQuantity(@PathVariable int productId, @RequestBody Map<String, Integer> requestBody, Principal principal) {
+    public ShoppingCart updateQuantity(@PathVariable int productId, @RequestBody Map<String, Integer> requestBody, Principal principal) {
         try {
             // Extract the new quantity from the request body
             int quantity = requestBody.get("quantity");
@@ -88,6 +92,9 @@ public class ShoppingCartController {
             int userId = user.getId();
 
             shoppingCartDao.updateProductQuantity(userId, productId, quantity);
+
+            // Return the updated cart
+            return shoppingCartDao.getByUserId(userId);
 
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to update quantity");
@@ -101,13 +108,17 @@ public class ShoppingCartController {
 
     // ==== Delete ====
     @DeleteMapping("")
-    public void clearCart(Principal principal) {
+    public ShoppingCart clearCart(Principal principal) {
         try {
             String userName = principal.getName();
             User user = userDao.getByUserName(userName);
             int userId = user.getId();
 
             shoppingCartDao.clearCart(userId);
+
+            // Return the updated cart
+            return shoppingCartDao.getByUserId(userId);
+
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to clear cart");
         }
