@@ -2,13 +2,14 @@ package org.yearup.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Order {
 
     private int orderId;
     private int userId;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
     private String address;
     private String city;
     private String state;
@@ -35,11 +36,11 @@ public class Order {
         this.userId = userId;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

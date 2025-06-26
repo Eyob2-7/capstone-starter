@@ -11,6 +11,7 @@ import org.yearup.models.*;
 import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class OrderController {
 
             // Step 3: Set order details
             order.setUserId(userId);                                // Associate order with the user
-            order.setCreatedAt(LocalDate.now());                    // Set the current date as order date
+            order.setCreatedAt(LocalDateTime.now());                    // Set the current date as order date
 
             order.setShippingAmount(BigDecimal.valueOf(20));        // Fixed shipping cost
             order.setTotalAmount(cart.getTotal().add(order.getShippingAmount())); // Total = cart total + shipping
