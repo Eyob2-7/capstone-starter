@@ -71,7 +71,7 @@ This backend integrates with a MySQL database and uses JWT authentication. It po
 ---
 ## 📸 Screenshots
 ### 🏠 Home Page
-![Home Page](ui-screenshots/ui-home-page.png)
+![Home Page](src/main/resources/ui-screenshots/ui-home-page.png)
 ### 🛒 Cart with Added Product
 ![Cart](ui-screenshots/ui-viewCart-with-added-product.png)
 ### ✅ Checkout Confirmation
