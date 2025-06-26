@@ -71,13 +71,13 @@ This backend integrates with a MySQL database and uses JWT authentication. It po
 ---
 ## 📸 Screenshots
 ### 🏠 Home Page
-![Home Page](screenshots/ui-home-page.png)
+![Home Page](ui-screenshots/ui-home-page.png)
 ### 🛒 Cart with Added Product
-![Cart](screenshots/ui-viewCart-with-added-product.png)
+![Cart](ui-screenshots/ui-viewCart-with-added-product.png)
 ### ✅ Checkout Confirmation
-![Checkout](screenshots/ui-checkout-confirmation.png)
+![Checkout](ui-screenshots/ui-checkout-confirmation.png)
 ### 👤 Get Profile
-![Get Profile](screenshots/ui-getprofile.png)
+![Get Profile](ui-screenshots/ui-getprofile.png)
 ### ✏️ Update Profile
-![Update Profile](screenshots/ui-updateprofile.png)
+![Update Profile](ui-screenshots/ui-updateprofile.png)
  
