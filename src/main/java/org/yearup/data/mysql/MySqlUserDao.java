@@ -146,6 +146,7 @@ public class MySqlUserDao extends MySqlDaoBase implements UserDao
         return user != null;
     }
 
+    // Helper method
     private User mapRow(ResultSet row) throws SQLException
     {
         int userId = row.getInt("user_id");

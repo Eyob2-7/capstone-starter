@@ -19,6 +19,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao {
         super(dataSource);
     }
 
+    // Search by category,price,color and search term
     @Override
     public List<Product> search(Integer categoryId, BigDecimal minPrice, BigDecimal maxPrice, String color, String searchTerm) {
         List<Product> products = new ArrayList<>();
@@ -68,6 +69,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao {
         return products;
     }
 
+    // Get a category by category ID
     @Override
     public List<Product> listByCategoryId(int categoryId) {
         List<Product> products = new ArrayList<>();
@@ -92,7 +94,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao {
         return products;
     }
 
-
+    // Get a product by product ID
     @Override
     public Product getById(int productId) {
         String sql = "SELECT * FROM products WHERE product_id = ?";
@@ -111,6 +113,8 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao {
         return null;
     }
 
+
+    // Creates a product
     @Override
     public Product create(Product product) {
 
@@ -148,6 +152,8 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao {
         return null;
     }
 
+
+    // Updates a product
     @Override
     public void update(int productId, Product product) {
         String sql = "UPDATE products" +
@@ -179,6 +185,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao {
         }
     }
 
+    // Delete a product
     @Override
     public void delete(int productId) {
 
